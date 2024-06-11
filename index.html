@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-ГИС проект</title>
+    <script src="./libs/dist/leaflet.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU"></script>
+    <script src="./libs/dist/Yandex.js"></script>
+    <script src="./libs/dist/leaflet-measure.js"></script>
+    <link rel="stylesheet" href="./libs/dist/leaflet.css">
+    <link rel="stylesheet" href="./libs/dist/leaflet-measure.css">
+    <style>
+        html, body, #map {height: 100%; width: 100%; margin: 0px;}
+        .lgndPanel{background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 5px;}
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="./data/Points.js"></script>
+    <script src="./libs/main.js"></script>
+</body>
+</html>  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-ГИС проект</title>
+    <script src="./libs/dist/leaflet.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU"></script>
+    <script src="./libs/dist/Yandex.js"></script>
+    <script src="./libs/dist/leaflet-measure.js"></script>
+    <link rel="stylesheet" href="./libs/dist/leaflet.css">
+    <link rel="stylesheet" href="./libs/dist/leaflet-measure.css">
+    <style>
+        html, body, #map {height: 100%; width: 100%; margin: 0px;}
+        .lgndPanel{background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 5px;}
+        .button-container {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        .custom-button {
+            background-color: #6495ed;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="button-container">
+        <button class="custom-button" onclick="window.location.href='TravelMap.html'">Перейти на карту путешествий</button>
+    </div>
+    <script src="./data/Points.js"></script>
+    <script src="./libs/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,123 @@
+<!-- Задание 1 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-ГИС проект</title>
+    <script src="./libs/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="./libs/dist/leaflet.css">
+    <style>
+        html, body, #map {height: 100%; width: 100%; margin: 0px;}
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var bmURL = 'https://tile.openstreetmap.de/{z}/{x}/{y}.png', 
+            bm = L.tileLayer(bmURL);
+
+        // Создание объекта карты
+
+        var myMap = L.map('map', {
+            center: [44.641056, -124.057617],
+            zoom: [13],
+            layers: [bm]
+        });
+    </script>
+</body>
+</html> -->
+
+<!-- Задание 2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web-ГИС проект</title>
+    <script src="./libs/dist/leaflet.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru-RU"></script>
+    <script src="./libs/dist/Yandex.js"></script>
+    <link rel="stylesheet" href="./libs/dist/leaflet.css">
+    <style>
+        html, body, #map {height: 100%; width: 100%; margin: 0px;}
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var bmURL = 'https://tile.openstreetmap.de/{z}/{x}/{y}.png', 
+            bm = L.tileLayer(bmURL);
+
+        // Функция создания оверлей слоя дорожной обстановки 
+
+        function traffic(){
+            var trafficProvider = new ymaps.traffic.provider.Actual({},{
+                infoLayerShown: true
+            });
+            trafficProvider.setMap(this._yandex);
+        };
+        // Создание объектов базовых слоёв
+
+        const mapOSMdark = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
+            attribution: '<b><i>Map by OSM & CartoDB</i></b>'
+        }),
+                gSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+                    subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+                    maxZoom: 19,
+                    attribution: '<b><i>Google sat images</i></b>'
+                }),
+
+                yMap = L.yandex('map');
+
+        // Создание объектов оверлей-слоёв
+
+        // const permGKH = L.tileLayer.wms('https://romangis.nextgis.com/api/resource/660/wms',{
+        //     layers: 'ngw_id_656',
+        //     format: 'image/png',
+        //     transparent: true,
+        //     attribution: '<b><i>Data by "Реформа ЖКХ"</i></b>'
+        // })
+
+        const Oceans = L.tileLayer.wms('https://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv',{
+            layers: 'GEBCO_LATEST_SUB_ICE_TOPO',
+            format: 'image/png',
+            transparent: true,
+            attribution: '<b><i>бщедоступная батиметрическая карта Мирового океана</i></b>'
+        })
+
+        // Создание объекта карты
+
+        var myMap = L.map('map', {
+            center: [44.641056, -124.057617],
+            zoom: [12],
+            layers: [bm]
+        }),
+            yTraffic = L.yandex('overlay')
+                .on('load', traffic)
+
+        // Отключение флага и ссылки на Leflet
+
+        myMap.attributionControl.setPrefix(false);
+
+        // Формировнаие списка базовых слоёв
+
+        var baseLayers = {
+            'Карта OSM' : bm,
+            'Тёмная карта OSM': mapOSMdark,
+            'Google спутник': gSat,
+            'Яндекс карта': yMap
+        },
+            overlayLayers = {
+                'Карта данных': Oceans,
+                'Яндекс пробки': yTraffic
+        };
+
+        // Созданиеи и добавление на карту элемента преключателя слоёв
+
+        L.control.layers(baseLayers, overlayLayers).addTo(myMap)
+
+    </script>
+</body>
+</html> 

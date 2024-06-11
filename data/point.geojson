@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "point",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "Name": "Asiatico Waterfront Fusion Sushi\n", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.056178732964028, 44.626429943964446 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Name": "Bay Street Pier\n", "Photo": "photo2.png" }, "geometry": { "type": "Point", "coordinates": [ -124.056253008759896, 44.626604078134328 ] } },
+{ "type": "Feature", "properties": { "id": 3, "Name": "Bornstein Seafoods Inc\n", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.05593376847645, 44.627037234616047 ] } },
+{ "type": "Feature", "properties": { "id": 4, "Name": "ATM", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.056417444692883, 44.627014186747971 ] } },
+{ "type": "Feature", "properties": { "id": 5, "Name": "Femme Fatale", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.056187369034646, 44.627334352163913 ] } },
+{ "type": "Feature", "properties": { "id": 6, "Name": "Ocean Bleu Seafoods at Gino's\n", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.056128791754986, 44.627447838562631 ] } },
+{ "type": "Feature", "properties": { "id": 7, "Name": "Parking", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.056021400075565, 44.627609961604449 ] } },
+{ "type": "Feature", "properties": { "id": 8, "Name": "Yaquina Bay", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.0552840665204, 44.626516780326625 ] } },
+{ "type": "Feature", "properties": { "id": 9, "Name": "US Coast Guard\n", "Photo": "photo1.png" }, "geometry": { "type": "Point", "coordinates": [ -124.057042638795963, 44.626488798179558 ] } },
+{ "type": "Feature", "properties": { "id": 10, "Name": "Yaquina Bay Station\n", "Photo": null }, "geometry": { "type": "Point", "coordinates": [ -124.057133784715788, 44.626709349828666 ] } }
+]
+}
