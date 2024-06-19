@@ -84,7 +84,7 @@ const boatLayers = L.layerGroup([
     .bindPopup('<b>Название объекта</b><i> Bay Street Pier </i><br><img src = "./data/Photos/photo0jpg.jpg" width = 250px height = 250px >'),
 ]);
 
-// Добавление на карту данных из geojson файла
+// Добавление точечных объектов на карту данных из geojson файла
 
 var buildingLayer = L.geoJSON(building, {
     pointToLayer: function(feature, latlng){
@@ -104,6 +104,50 @@ var buildingLayer = L.geoJSON(building, {
             + '/Photo1.png" width = "200" height = "120">'
         }
         return '<b>Название: </b>' + building.feature.properties.Name + poinPhoto
+    });
+
+// Добавление площадных объектов на карту данных из geojson файла
+
+var polygonLayer = L.geoJSON(polygon, {
+    pointToLayer: function(feature, latlng){
+        // // let name = feature.properties.Name
+        // // name == "US Coast Guard\n" ? icn = boatIcons[0]:
+        // // name == "Bay Street Pier\n" ? icn = boatIcons[1]:
+        // icn = boatIcons[2]
+
+        return L.marker(latlng, {icon: icn, title: feature.properties.Name})
+    }
+})
+    .bindPopup(function(polygon) {
+        let poinPhoto = '';
+        if (polygon.feature.properties.Photo != null) {
+            poinPhoto = '<br><img src = "./data/Photos/' 
+            + polygon.feature.properties.id 
+            + '/Photo1.png" width = "200" height = "120">'
+        }
+        return '<b>Название: </b>' + polygon.feature.properties.Address + poinPhoto
+    });
+
+// Добавление линейных объектов на карту данных из geojson файла
+
+var LineLayer = L.geoJSON(line, {
+    pointToLayer: function(feature, latlng){
+        // let name = feature.properties.Name
+        // name == "US Coast Guard\n" ? icn = boatIcons[0]:
+        // name == "Bay Street Pier\n" ? icn = boatIcons[1]:
+        // icn = boatIcons[2]
+
+        return L.marker(latlng, {icon: icn, title: feature.properties.Name})
+    }
+})
+    .bindPopup(function(line) {
+        let poinPhoto = '';
+        if (line.feature.properties.Photo != null) {
+            poinPhoto = '<br><img src = "./data/Photos/' 
+            + line.feature.properties.id 
+            + '/Photo1.png" width = "200" height = "120">'
+        }
+        return '<b>Название: </b>' + line.feature.properties.Name + poinPhoto
     });
 
 // Создание объекта карты
@@ -133,7 +177,9 @@ overlayLayers = {
     'Яндекс пробки': yTraffic,
     'Яндекс пробки с эл. упр.': yTrafficCntrl,
     'Водные объекты': boatLayers,
-    'Рандомные объекты': buildingLayer
+    'Точечные объекты': buildingLayer,
+    'Площадные объекты': polygonLayer,
+    'Линейные объекты': LineLayer
 };
 
 // Созданиеи и добавление на карту элемента преключателя слоёв
